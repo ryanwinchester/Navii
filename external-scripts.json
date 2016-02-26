@@ -1,0 +1,14 @@
+[
+  "hubot-auth",
+  "hubot-diagnostics",
+  "hubot-microsoft-translator",
+  "hubot-maps",
+  "hubot-redis-brain",
+  "hubot-rules",
+  "hubot-shipit",
+  "hubot-business-cat",
+  "hubot-http-status",
+  "hubot-thank-you",
+  "hubot-darksky",
+  "hubot-microsoft-images"
+]

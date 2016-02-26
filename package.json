@@ -1,0 +1,32 @@
+{
+  "name": "Minfilia",
+  "version": "0.0.0",
+  "private": true,
+  "author": "ryanwinchester <fungku@gmail.com>",
+  "description": "She raises Epona and teaches you songs.",
+  "dependencies": {
+    "hubot": "^2.18.0",
+    "hubot-auth": "^1.2.0",
+    "hubot-business-cat": "^1.5.0",
+    "hubot-darksky": "^1.0.2",
+    "hubot-diagnostics": "0.0.1",
+    "hubot-factoids": "^0.2.7",
+    "hubot-google-translate": "^0.2.0",
+    "hubot-help": "^0.1.3",
+    "hubot-http-status": "^0.2.1",
+    "hubot-irc": "^0.2.8",
+    "hubot-maps": "0.0.2",
+    "hubot-microsoft-images": "^0.2.3",
+    "hubot-microsoft-translator": "^0.2.0",
+    "hubot-motivate": "^3.0.0",
+    "hubot-pugme": "^0.1.0",
+    "hubot-redis-brain": "0.0.3",
+    "hubot-rules": "^0.1.1",
+    "hubot-scripts": "^2.16.2",
+    "hubot-shipit": "^0.2.0",
+    "hubot-thank-you": "0.0.3"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}
