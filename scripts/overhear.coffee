@@ -15,3 +15,7 @@ module.exports = (robot) ->
     msg.send "!missrommie"
   robot.hear /(where('s| is)|what( the (.*))? happened to) Rommie/i, (msg) ->
     msg.reply "I don't know, ask PhillSparks..."
+
+  # Regex problem
+  robot.hear /regex/i, (msg) ->
+    msg.send 'Some people, when confronted with a problem, think "I know, I\'ll use regular expressions." Now they have two problems.'
