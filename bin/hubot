@@ -27,6 +27,9 @@ export HUBOT_IRC_NICK="$IRC_NICK"
 # REDIS BRAIN ------------------------------------------------------------------
 export REDIS_URL="redis://localhost:6379"
 
+# YOUTUBE ----------------------------------------------------------------------
+export HUBOT_YOUTUBE_KEY
+
 # MICROSOFT TRANSLATOR ---------------------------------------------------------
 export HUBOT_MICROSOFT_TRANSLATOR_CLIENT_ID
 export HUBOT_MICROSOFT_TRANSLATOR_CLIENT_SECRET

@@ -16,7 +16,6 @@
     "hubot-http-status": "^0.2.1",
     "hubot-irc": "^0.2.8",
     "hubot-maps": "0.0.2",
-    "hubot-microsoft-images": "^0.2.3",
     "hubot-microsoft-translator": "^0.2.0",
     "hubot-motivate": "^3.0.0",
     "hubot-pugme": "^0.1.0",

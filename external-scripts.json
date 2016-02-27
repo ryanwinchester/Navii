@@ -9,6 +9,5 @@
   "hubot-business-cat",
   "hubot-http-status",
   "hubot-thank-you",
-  "hubot-darksky",
-  "hubot-microsoft-images"
+  "hubot-darksky"
 ]
