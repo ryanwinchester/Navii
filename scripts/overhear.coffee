@@ -19,3 +19,7 @@ module.exports = (robot) ->
   # Regex problem
   robot.hear /regex/i, (msg) ->
     msg.send 'Some people, when confronted with a problem, think "I know, I\'ll use regular expressions." Now they have two problems.'
+
+  # just do it
+  robot.hear /just do it/i, (msg) ->
+    msg.send "https://www.youtube.com/watch?v=ZXsQAXx_ao0"
