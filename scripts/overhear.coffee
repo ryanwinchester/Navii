@@ -28,3 +28,7 @@ module.exports = (robot) ->
   robot.hear /((i don'?t get)|(.* doesn'?t get)|(didn'?t get) it|(the joke))|wh?oosh/i, (msg) ->
     msg.send "https://s3-us-west-2.amazonaws.com/sevenshores/gif/Joke-Goes-Over-Your-Head-Star-Trek-Gif.gif"
 
+  # that's what she said
+  robot.hear /that('s| is)( a)? (big|small|large|huge|tiny)/i, (msg) ->
+    msg.reply "That's what she said."
+
