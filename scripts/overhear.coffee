@@ -22,7 +22,7 @@ module.exports = (robot) ->
 
   # just do it
   robot.hear /just do it/i, (msg) ->
-    msg.send "https://www.youtube.com/watch?v=ZXsQAXx_ao0"
+    msg.send "https://www.youtube.com/watch?v=hAEQvlaZgKY"
 
   # don't get the joke
   robot.hear /((i don'?t get)|(.* doesn'?t get)|(didn'?t get) it|(the joke))|wh?oosh/i, (msg) ->
