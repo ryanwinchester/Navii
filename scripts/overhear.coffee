@@ -25,6 +25,6 @@ module.exports = (robot) ->
     msg.send "https://www.youtube.com/watch?v=ZXsQAXx_ao0"
 
   # don't get the joke
-  robot.hear /(i don'?t get it)|(.* doesn'?t get it)|(didn'?t get it)|whoosh/i, (msg) ->
+  robot.hear /((i don'?t get)|(.* doesn'?t get)|(didn'?t get) it|(the joke))|wh?oosh/i, (msg) ->
     msg.send "https://s3-us-west-2.amazonaws.com/sevenshores/gif/Joke-Goes-Over-Your-Head-Star-Trek-Gif.gif"
 
