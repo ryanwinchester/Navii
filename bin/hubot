@@ -35,7 +35,7 @@ export HUBOT_MICROSOFT_TRANSLATOR_CLIENT_ID
 export HUBOT_MICROSOFT_TRANSLATOR_CLIENT_SECRET
 
 # MICROSOFT IMAGES -------------------------------------------------------------
-export HUBOT_BING_IMAGES_ADULT="Moderate"
+export HUBOT_BING_IMAGES_ADULT="Off"
 export HUBOT_BING_IMAGES_ACCOUNT_KEY
 
 # AUTH -------------------------------------------------------------------------
