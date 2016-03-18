@@ -52,7 +52,7 @@ export HUBOT_DARK_SKY_SEPARATOR="; "
 
 # BUSINESS JARGON --------------------------------------------------------------
 export HUBOT_BUSINESS_CAT_JARGON='scalability,webscale,innovation'
-#export HUBOT_BUSINESS_CAT_OMITTED_JARGON='in the loop,takeaway' # user to remove triggers
+export HUBOT_BUSINESS_CAT_OMITTED_JARGON='takeaway'
 
 # START ------------------------------------------------------------------------
 exec node_modules/.bin/hubot --name "$IRC_NICK" "$@"
