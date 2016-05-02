@@ -7,5 +7,5 @@ module.exports = (robot) ->
     if room not in rooms
         res.send "Invalid room"
     else
-        robot.messageRoom room, "HELLO, webhook been hit, yo"
+        robot.messageRoom "##{room}", "HELLO, webhook been hit, yo"
         res.send 'OK'
