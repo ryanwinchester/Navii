@@ -5,7 +5,7 @@
 #   hubot youtube me (-) <query> - Searches YouTube for the query and returns the video embed link.
 
 module.exports = (robot) ->
-  robot.respond /(youtube|yt)( me)?( -)? (.*)/i, (msg) ->
+  robot.respond /(youtube|yt|video|vid)|( me)?( -)? (.*)/i, (msg) ->
     norandom = msg.match[3]?
     query = msg.match[4]
     robot.http("https://www.googleapis.com/youtube/v3/search")

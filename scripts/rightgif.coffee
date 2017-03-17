@@ -15,7 +15,7 @@
 
 module.exports = (robot) ->
 
-  robot.hear /!(?:gif|animate)( me)? (.*)/i, (msg) ->
+  robot.respond /(?:gif|animate)( me)? (.*)/i, (msg) ->
     if msg.message.room == '#flashtag' or msg.message.room == 'Shell'
       rightGif msg, msg.match[2], (url) ->
         msg.send url
