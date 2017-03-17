@@ -5,15 +5,16 @@ set -e
 CWD=$(pwd)
 HUBOT_BIN="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-yarn
-export PATH="node_modules/.bin:node_modules/hubot/node_modules/.bin:$PATH"
-
 # import private variables
 cd "$HUBOT_BIN/../"
 source ./.env
 cd "$CWD"
+
+export NVIM_DIR="$NVM_DIR"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+yarn
+export PATH="node_modules/.bin:node_modules/hubot/node_modules/.bin:$PATH"
 
 # IRC --------------------------------------------------------------------------
 export HUBOT_IRC_SERVER="irc.freenode.net"
