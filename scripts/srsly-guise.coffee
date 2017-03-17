@@ -25,5 +25,5 @@ images = [
 
 module.exports = (robot) ->
   robot.hear /s(rsly|eriously) gu(?:ise|ys)/i, (msg) ->
-    if msg.message.room == 'flashtag' or msg.message.room == 'Shell'
+    if msg.message.room == '#flashtag' or msg.message.room == 'Shell'
       msg.send msg.random images

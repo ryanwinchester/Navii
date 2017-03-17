@@ -14,7 +14,7 @@ giphy =
 module.exports = (robot) ->
 
   robot.hear /!giphy( me)? (.*)/i, (msg) ->
-    if msg.message.room == 'flashtag' or msg.message.room == 'Shell'
+    if msg.message.room == '#flashtag' or msg.message.room == 'Shell'
       giphyMe msg, msg.match[2], (url) ->
         msg.send url
 

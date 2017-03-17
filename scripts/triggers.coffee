@@ -21,7 +21,7 @@ module.exports = (robot) ->
     res.send ("#{trigger_char}#{key}" for own key of triggers).join(", ")
 
   robot.hear ///^#{trigger_char}(.+)$///gi, (res) ->
-    if res.message.room == 'flashtag' or res.message.room == 'Shell'
+    if res.message.room == '#flashtag' or res.message.room == 'Shell'
       match = res.match[0].replace(///^#{trigger_char}///, "")
       if triggers[match]?
         res.send triggers[match]
