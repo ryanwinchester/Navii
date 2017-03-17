@@ -5,6 +5,8 @@ set -e
 CWD=$(pwd)
 HUBOT_BIN="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
 yarn
 export PATH="node_modules/.bin:node_modules/hubot/node_modules/.bin:$PATH"
 
