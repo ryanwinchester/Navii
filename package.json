@@ -23,7 +23,9 @@
     "hubot-rules": "^0.1.1",
     "hubot-scripts": "^2.16.2",
     "hubot-shipit": "^0.2.0",
-    "hubot-thank-you": "0.0.3"
+    "hubot-thank-you": "0.0.3",
+    "node-gyp": "^3.6.0",
+    "rebuild": "^0.1.2"
   },
   "engines": {
     "node": "0.10.x"
