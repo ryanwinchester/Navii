@@ -72,4 +72,4 @@ module.exports = (robot) ->
            msg.send "Sorry, the ECB isn't playing with us."
          else
            amount_dest = (amount / orig_exchg) * dest_exchg
-           msg.send "#{numeral(amount, '0,0.00')} #{orig_code} is #{numeral(amount_dest, '0,0.00')} #{dest_code}."
+           msg.send "#{numeral(amount).format('0,0.00')} #{orig_code} is #{numeral(amount_dest).format('0,0.00')} #{dest_code}."
