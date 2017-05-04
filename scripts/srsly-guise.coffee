@@ -23,7 +23,9 @@ images = [
   "http://i.imgur.com/ersspRE.gif"
 ]
 
+channels = process.env.WHITELIST_CHANNELS.split(',')
+
 module.exports = (robot) ->
   robot.hear /s(rsly|eriously) gu(?:ise|ys)/i, (msg) ->
-    if msg.message.room == '#flashtag' or msg.message.room == 'Shell'
+    if msg.message.room in channels
       msg.send msg.random images

@@ -14,9 +14,8 @@ giphy =
 module.exports = (robot) ->
 
   robot.respond /giphy( me)? (.*)/i, (msg) ->
-    if msg.message.room == '#flashtag' or msg.message.room == 'Shell'
-      giphyMe msg, msg.match[2], (url) ->
-        msg.send url
+    giphyMe msg, msg.match[2], (url) ->
+      msg.send url
 
 giphyMe = (msg, query, cb) ->
   endpoint = '/gifs/search'

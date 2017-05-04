@@ -17,22 +17,25 @@
 # Author:
 #   jjasghar
 
+channels = process.env.WHITELIST_CHANNELS.split(',')
+
 module.exports = (robot) ->
 
-  robot.hear /^~(m|than(k|ks)) (.+)$/i, (msg) ->
-    user = msg.match[3]
+  robot.hear /^(than(k|ks)) (\w)$/i, (msg) ->
+    if msg.message.room in channels
+      user = msg.match[3]
 
-    praise = [
-        "Keep on rocking, #{user}!",
-        "Keep up the great work, #{user}!",
-        "You're awesome, #{user}!",
-        "You're doing good work, #{user}!" # Original and inspiration
-        ]
+      praise = [
+          "Keep on rocking, #{user}!",
+          "Keep up the great work, #{user}!",
+          "You're awesome, #{user}!",
+          "You're doing good work, #{user}!" # Original and inspiration
+          ]
 
-    msg.send msg.random praise
+      msg.send msg.random praise
 
   robot.hear /^(\^5) (.+)$/i, (msg) ->
-    user = msg.match[2]
+    if msg.message.room in channels
+      user = msg.match[2]
+      msg.emote "high fives #{user}"
 
-    msg.emote "high fives #{user}"
-    

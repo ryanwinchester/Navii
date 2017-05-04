@@ -12,6 +12,7 @@
 # Author:
 #   Ryan Winchester <code@ryanwinchester.ca>
 
+channels = process.env.TRIGGER_CHANNELS.split(',')
 trigger_char = process.env.HUBOT_TRIGGER_CHAR || '!'
 triggers = require('../support/triggers')
 
@@ -21,7 +22,7 @@ module.exports = (robot) ->
     res.send ("#{trigger_char}#{key}" for own key of triggers).join(", ")
 
   robot.hear ///^#{trigger_char}(.+)$///gi, (res) ->
-    if res.message.room == '#flashtag' or res.message.room == 'Shell'
+    if res.message.room in channels
       match = res.match[0].replace(///^#{trigger_char}///, "")
       if triggers[match]?
         res.send triggers[match]

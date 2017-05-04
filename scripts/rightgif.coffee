@@ -13,12 +13,12 @@
 # Author:
 #   fuadsaud
 
+
 module.exports = (robot) ->
 
   robot.respond /(?:gif|animate)( me)? (.*)/i, (msg) ->
-    if msg.message.room == '#flashtag' or msg.message.room == 'Shell'
-      rightGif msg, msg.match[2], (url) ->
-        msg.send url
+    rightGif msg, msg.match[2], (url) ->
+      msg.send url
 
 rightGif = (msg, query, cb) ->
   url = 'https://rightgif.com/search/web'
