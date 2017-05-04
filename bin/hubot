@@ -27,6 +27,8 @@ export HUBOT_IRC_UNFLOOD="true"
 export HUBOT_IRC_ROOMS="$IRC_CHANNELS"
 export HUBOT_IRC_NICKSERV_USERNAME="$IRC_USERNAME"
 export HUBOT_IRC_NICK="$IRC_NICK"
+export WHITELIST_CHANNELS
+export TRIGGER_CHANNELS
 
 # REDIS BRAIN ------------------------------------------------------------------
 export REDIS_URL="redis://localhost:6379"
