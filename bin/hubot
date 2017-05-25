@@ -63,5 +63,8 @@ export HUBOT_DARK_SKY_SEPARATOR="; "
 export HUBOT_BUSINESS_CAT_JARGON='scalability,webscale,innovation'
 export HUBOT_BUSINESS_CAT_OMITTED_JARGON='takeaway'
 
+# GIPHY ------------------------------------------------------------------------
+export HUBOT_GIPHY_API_KEY
+
 # START ------------------------------------------------------------------------
 exec node_modules/.bin/hubot --name "$IRC_NICK" "$@"
