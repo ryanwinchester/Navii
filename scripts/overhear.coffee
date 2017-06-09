@@ -17,7 +17,7 @@ module.exports = (robot) ->
         msg.send 'Some people, when confronted with a problem, think "I know, I\'ll use regular expressions." Now they have two problems.'
 
     # just do it
-    robot.hear /just do it/i, (msg) ->
+    robot.hear /^just do it(.{1,10})?$/i, (msg) ->
       if msg.message.room in channels
         msg.send "https://www.youtube.com/watch?v=hAEQvlaZgKY"
 

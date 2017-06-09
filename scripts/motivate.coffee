@@ -21,9 +21,9 @@ channels = process.env.WHITELIST_CHANNELS.split(',')
 
 module.exports = (robot) ->
 
-  robot.hear /^(than(k|ks)) (\w)$/i, (msg) ->
+  robot.hear /^(thanks|thank you),? (\w+)$/i, (msg) ->
     if msg.message.room in channels
-      user = msg.match[3]
+      user = msg.match[2]
 
       praise = [
           "Keep on rocking, #{user}!",
