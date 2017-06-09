@@ -21,9 +21,9 @@ channels = process.env.WHITELIST_CHANNELS.split(',')
 
 module.exports = (robot) ->
 
-  robot.hear /^(thanks|thank you),? (\w+)$/i, (msg) ->
+  robot.hear /^(?:thanks|thank you|(?:good|nice) (?:work|job)),? (\w+).?$/i, (msg) ->
     if msg.message.room in channels
-      user = msg.match[2]
+      user = msg.match[1]
 
       praise = [
           "Keep on rocking, #{user}!",
@@ -34,8 +34,8 @@ module.exports = (robot) ->
 
       msg.send msg.random praise
 
-  robot.hear /^(\^5) (.+)$/i, (msg) ->
+  robot.hear /^(?:\^5) (.+)$/i, (msg) ->
     if msg.message.room in channels
-      user = msg.match[2]
+      user = msg.match[1]
       msg.emote "high fives #{user}"
 
