@@ -3,12 +3,14 @@ defmodule Navii.Overhear do
 
   def handle_info({:received, msg, _sender_info, channel}, conn) do
     cond do
-      match? ~r/srsly guise|seriously,? guys/, msg ->
+      Regex.match? ~r/srsly guise|seriously,? guys/, msg ->
         Bot.send srsly_guise_img(), channel
-      match? ~r/^just do it,?(?: \w+)?/, msg ->
+      Regex.match? ~r/^just do it,?(?: \w+)?/, msg ->
         Bot.send "https://www.youtube.com/watch?v=hAEQvlaZgKY", channel
-      match? ~r/┻━┻/, msg ->
+      Regex.match? ~r/┻━┻/, msg ->
         Bot.send "┬──┬◡ﾉ(° -°ﾉ)", channel
+      true ->
+        :ok
     end
     {:noreply, conn}
   end
