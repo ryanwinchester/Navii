@@ -38,7 +38,7 @@ config :kuma,
     channels: (System.get_env("IRC_CHANNELS") || "") |> String.split(","),
   },
   custom_handlers: [
-    Navii.OverhearHandler,
+    Navii.Overhear,
   ]
 
 # It is also possible to import configuration files, relative to this
