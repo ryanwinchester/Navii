@@ -15,7 +15,7 @@ defmodule Navii.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     # Specify extra applications you'll use from Erlang/Elixir
-    [extra_applications: [:logger],
+    [extra_applications: [:logger, :ssl],
      mod: {Navii.Application, []}]
   end
 
