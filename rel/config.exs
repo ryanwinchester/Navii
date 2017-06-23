@@ -41,7 +41,7 @@ end
 release :navii do
   set version: current_version(:navii)
   set applications: [
-    :runtime_tools
+    :runtime_tools,
   ]
 end
 
