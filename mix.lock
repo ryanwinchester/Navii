@@ -1,0 +1,4 @@
+%{"distillery": {:hex, :distillery, "1.4.0", "d633cd322c8efa0428082b00b7f902daf8caa166d45f9022bbc19a896d2e1e56", [:mix], []},
+  "exirc": {:hex, :exirc, "1.0.1", "a1eccd89eea12eb928b7142dba7b6b7766ebca74b92405c37af9a8e7d3bd39a4", [:mix], []},
+  "kuma": {:git, "git@github.com:ryanwinchester/kuma.git", "ba53a55b195aec5d0b6de14e2705ffd71b66735d", []},
+  "xircex": {:git, "git@github.com:ryanwinchester/xircex.git", "86f494f7212988293ad7cdf0ba1313fd33bfb0ec", []}}
