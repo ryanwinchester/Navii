@@ -17,7 +17,7 @@ defmodule Navii.Weather do
   Get the current weather for a location.
   """
   def handle_info({:mentioned, msg, %SenderInfo{nick: _nick}, channel}, conn) do
-    regex = ~r/^Navii.? weather (.+)$/i
+    regex = ~r/^Navii.? weather(?: (.+))?$/i
 
     if Regex.match? regex, msg do
       regex
