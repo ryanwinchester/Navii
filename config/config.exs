@@ -39,6 +39,7 @@ config :kuma,
   },
   custom_handlers: [
     Navii.Overhear,
+    Navii.Weather,
   ]
 
 # It is also possible to import configuration files, relative to this
