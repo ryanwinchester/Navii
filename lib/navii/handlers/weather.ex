@@ -11,4 +11,7 @@ defmodule Navii.Weather do
 
     {:noreply, conn}
   end
+
+  # Catch-all for messages you don't care about
+  def handle_info(_msg, conn), do: {:noreply, conn}
 end
