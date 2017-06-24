@@ -36,6 +36,8 @@ defmodule Navii.Mixfile do
     [
       {:kuma, git: "git@github.com:ryanwinchester/kuma.git"},
       {:distillery, "~> 1.4"},
+      {:httpoison, "~> 0.11.2"},
+      {:poison, "~> 3.1"},
     ]
   end
 end
