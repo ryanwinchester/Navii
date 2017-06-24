@@ -3,7 +3,7 @@ defmodule Navii.Weather do
     defstruct [
       lat: 49.06454489999999,
       lng: -122.2556566,
-      text: nil,
+      text: "Abbotsford, BC, Canada",
     ]
   end
 
@@ -17,12 +17,16 @@ defmodule Navii.Weather do
   Get the current weather for a location.
   """
   def handle_info({:mentioned, msg, %SenderInfo{nick: _nick}, channel}, conn) do
-    ~r/Navii.? weather (.+)/i
-    |> Regex.run(msg, capture: :all_but_first)
-    |> get_geo()
-    |> get_weather()
-    |> format_weather()
-    |> Bot.send(channel)
+    regex = ~r/^Navii.? weather (.+)$/i
+
+    if Regex.match? regex, msg do
+      regex
+      |> Regex.run(msg, capture: :all_but_first)
+      |> get_geo()
+      |> get_weather()
+      |> format_weather()
+      |> Bot.send(channel)
+    end
 
     {:noreply, conn}
   end
