@@ -2,25 +2,25 @@ defmodule Navii.Responders.Currency do
   use Hedwig.Responder
   require Logger
 
-  @currencies = [
+  @currencies [
     "EUR", "USD", "JPY", "BGN", "CZK", "DKK", "GBP", "HUF", "LTL", "PLN", "RON",
     "SEK", "CHF", "NOK", "HRK", "RUB", "TRY", "AUD", "BRL", "CAD", "CNY", "HKD",
     "IDR", "ILS", "INR", "KRW", "MXN", "MYR", "NZD", "PHP", "SGD", "THB", "ZAR",
   ]
 
-  @currency_coices = Enum.join(@currencies, "|")
+  @currency_choices Enum.join(@currencies, "|")
 
   respond ~r/convert ?([0-9.]+) ?(#{@currency_choices}) (?:into|in|to)? ?(#{@currency_choices})/i, msg do
-    {amount, _} = Float.parse(msg.matches[1])
+    {_amount, _} = Float.parse(msg.matches[1])
     from = String.upcase(msg.matches[2])
     to = String.upcase(msg.matches[3])
 
-    exchange = fetch_rates(from, to)
+    _exchange = fetch_rates(from, to)
 
     send msg, "TODO"
   end
 
-  defp fetch_rates(from, to) do
+  defp fetch_rates(_from, _to) do
     url = "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"
     headers = [{"User-Agent", "Mozilla/5.0"}]
 
@@ -31,3 +31,4 @@ defmodule Navii.Responders.Currency do
         Logger.warn inspect(res)
     end
   end
+end
