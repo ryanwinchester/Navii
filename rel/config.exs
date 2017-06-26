@@ -24,13 +24,13 @@ use Mix.Releases.Config,
 environment :dev do
   set dev_mode: true
   set include_erts: false
-  set cookie: :"5Y0IB$!pL:gO$g*70BB|,Eb@^q>&P7/G{c{76)<eG5,OC:6*:5A;2Oa2iK3XHcn["
+  set cookie: :"X(f$N%yEaA3ScOid,OW|L^V,g!6b}n,FCK0sB_8J8VR>&X|[Q>xTeg0VhG,/ba?H"
 end
 
 environment :prod do
   set include_erts: true
   set include_src: false
-  set cookie: :"E;4[9)n&J0~wsYVzDuFJ7kHkjPY4o%t=<!Gwqz1uXcmjtd1:U^xlKHb[yPZt`Z3["
+  set cookie: :"2S^L=2liF&=7ASs9(qJR_x7o^Y8i/g3m`B=@.%<u8)qvH~&4S1wR:/>1qsN|u=$1"
 end
 
 # You may define one or more releases in this file.
@@ -41,7 +41,7 @@ end
 release :navii do
   set version: current_version(:navii)
   set applications: [
-    :runtime_tools,
+    :runtime_tools
   ]
 end
 

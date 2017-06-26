@@ -2,6 +2,26 @@
 # and its dependencies with the aid of the Mix.Config module.
 use Mix.Config
 
+config :navii, Navii.Robot,
+  adapter: Hedwig.Adapters.IRC,
+  aka: "!",
+  name: System.get_env("IRC_NICK") || "navii_bot",
+  user: System.get_env("IRC_USER") || "navii_bot",
+  full_name: System.get_env("IRC_NAME") || "Navii Bot", # optional, defaults to `:name`
+  password: System.get_env("IRC_PASS") || "",
+  server: "chat.freenode.net",
+  port: 6697, # optional, defaults to `6667`
+  ssl?: true, # optional, defaults to `false`
+  rooms:
+    (System.get_env("IRC_CHANNELS") || "")
+    |> String.split(",")
+    |> Enum.map(&({&1, ""})),
+  responders: [
+    {Hedwig.Responders.Help, []},
+    {Hedwig.Responders.Ping, []},
+    {Navii.Responders.Weather, []},
+  ]
+
 # This configuration is loaded before any dependency and is restricted
 # to this project. If another project depends on this project, this
 # file won't be loaded nor affect the parent project. For this reason,
@@ -20,27 +40,6 @@ use Mix.Config
 #
 #     config :logger, level: :info
 #
-
-# config :navii, bot: %{
-#   server: "chat.freenode.net", port: 6667,
-#   nick: "navii_ex", user: "navii_ex", name: "Navii Elixir",
-#   channel: "#flashtag", pass: ""
-# }
-
-config :kuma,
-  bot: %{
-    server: "chat.freenode.net",
-    port: 6697,
-    name: "Navii Elixir Bot",
-    nick: System.get_env("IRC_NICK") || "Navii Bot",
-    user: System.get_env("IRC_USERNAME") || "navii_bot",
-    pass: System.get_env("IRC_PASSWORD") || "",
-    channels: (System.get_env("IRC_CHANNELS") || "") |> String.split(","),
-  },
-  custom_handlers: [
-    Navii.Overhear,
-    Navii.Weather,
-  ]
 
 # It is also possible to import configuration files, relative to this
 # directory. For example, you can emulate configuration per environment

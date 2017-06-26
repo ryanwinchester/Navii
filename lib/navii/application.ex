@@ -9,7 +9,10 @@ defmodule Navii.Application do
     import Supervisor.Spec, warn: false
 
     # Define workers and child supervisors to be supervised
-    children = []
+    children = [
+      # Starts a worker by calling: Navii.Worker.start_link(arg1, arg2, arg3)
+      worker(Navii.Robot, []),
+    ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options

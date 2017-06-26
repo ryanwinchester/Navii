@@ -34,7 +34,7 @@ defmodule Navii.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:kuma, git: "git@github.com:ryanwinchester/kuma.git"},
+      {:hedwig_irc, git: "git@github.com:ryanwinchester/hedwig_irc.git"},
       {:distillery, "~> 1.4"},
       {:httpoison, "~> 0.11.2"},
       {:poison, "~> 3.1"},

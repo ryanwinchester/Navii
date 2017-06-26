@@ -1,4 +1,11 @@
-defmodule Navii.Weather do
+defmodule Navii.Responders.Weather do
+  @moduledoc """
+  Responds to 'weather :location' with the weather for that location.
+  """
+
+  use Hedwig.Responder
+  require Logger
+
   defmodule Geo do
     defstruct [
       lat: 49.06454489999999,
@@ -11,29 +18,16 @@ defmodule Navii.Weather do
     defstruct [:geo, :temperature, :humidity, :currently, :hourly, :daily]
   end
 
-  use Kuma.Handler
-
-  @doc """
-  Get the current weather for a location.
-  """
-  def handle_info({:mentioned, msg, %SenderInfo{nick: _nick}, channel}, conn) do
-    regex = ~r/^Navii.? weather(?: (.+))?$/i
-
-    if Regex.match? regex, msg do
-      regex
-      |> Regex.run(msg, capture: :all_but_first)
+  respond ~r/weather(?: (.+))?$/i, msg do
+    weather =
+      msg.matches[1]
       |> get_geo()
       |> get_weather()
       |> format_weather()
       |> replace_temps()
-      |> Bot.send(channel)
-    end
 
-    {:noreply, conn}
+      send msg, weather
   end
-
-  # Catch-all for messages you don't care about
-  def handle_info(_msg, conn), do: {:noreply, conn}
 
   # Get the geographic info from Google Maps
   defp get_geo(nil), do: %Geo{}
