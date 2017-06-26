@@ -26,7 +26,7 @@ defmodule Navii.Responders.Weather do
       |> format_weather()
       |> replace_temps()
 
-      send msg, weather
+    send msg, weather
   end
 
   # Get the geographic info from Google Maps

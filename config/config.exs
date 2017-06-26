@@ -19,6 +19,7 @@ config :navii, Navii.Robot,
   responders: [
     {Hedwig.Responders.Help, []},
     {Hedwig.Responders.Ping, []},
+    {Navii.Responders.Overhear, []},
     {Navii.Responders.Weather, []},
   ]
 
