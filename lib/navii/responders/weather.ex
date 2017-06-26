@@ -1,14 +1,6 @@
 defmodule Navii.Responders.Weather do
   @moduledoc """
-  Responds to "weather :location" with the weather for that location.
-
-  ### Examples
-
-      User> alfred weather las vegas
-      alfred> Weather for Las Vegas, NV, USA: Clear. 35°C (94°F) 11% humidity.
-      Clear throughout the day. No precipitation throughout the week, with
-      temperatures falling to 39°C (103°F) on Thursday.
-
+  Responds to `weather <location>` with the weather for that location.
   """
 
   use Hedwig.Responder
@@ -41,6 +33,9 @@ defmodule Navii.Responders.Weather do
     defstruct [:geo, :temperature, :humidity, :currently, :hourly, :daily]
   end
 
+  @usage """
+  hedwig weather <location> - gets the weather for the speified location
+  """
   respond ~r/weather(?: (.+))?$/i, msg do
     weather =
       msg.matches[1]

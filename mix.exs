@@ -35,8 +35,9 @@ defmodule Navii.Mixfile do
   defp deps do
     [
       {:hedwig_irc, git: "git@github.com:ryanwinchester/hedwig_irc.git"},
+      {:hedwig_simple_responders, "~> 0.1.2"},
       {:distillery, "~> 1.4"},
-      {:httpoison, "~> 0.11.2"},
+      {:httpoison, "~> 0.11.2", override: true},
       {:poison, "~> 3.1"},
       {:decimal, "~> 1.4"},
     ]

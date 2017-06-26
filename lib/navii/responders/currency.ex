@@ -1,12 +1,6 @@
 defmodule Navii.Responders.Currency do
   @moduledoc """
-  Responds to "convert :amount :currency into|in|to :currency"
-
-  ### Examples
-
-      User> alfred convert 10 USD to CAD
-      alfred> 10.00 USD is 13.23 CAD
-
+  Responds to `convert <amount> <currency> into|to <currency>`.
   """
 
   use Hedwig.Responder
@@ -20,7 +14,10 @@ defmodule Navii.Responders.Currency do
 
   @currency_choices Enum.join(@currencies, "|")
 
-  respond ~r/convert ?([0-9.]+) ?(#{@currency_choices}) (?:into|in|to)? ?(#{@currency_choices})/i, msg do
+  @usage """
+  hedwig convert <amount> <currency> into|to <currency> - converts the amount from one currency to the other
+  """
+  respond ~r/convert ?([0-9.]+) ?(#{@currency_choices}) (?:into|to)? ?(#{@currency_choices})/i, msg do
     amount = Decimal.new(msg.matches[1])
     from = String.upcase(msg.matches[2])
     to = String.upcase(msg.matches[3])

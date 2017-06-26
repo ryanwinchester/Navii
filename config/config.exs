@@ -5,9 +5,9 @@ use Mix.Config
 config :navii, Navii.Robot,
   adapter: Hedwig.Adapters.IRC,
   aka: "!",
-  name: System.get_env("IRC_NICK") || "navii_bot",
-  user: System.get_env("IRC_USER") || "navii_bot",
-  full_name: System.get_env("IRC_NAME") || "Navii Bot", # optional, defaults to `:name`
+  name: System.get_env("IRC_NICK") || "alfred_bot",
+  user: System.get_env("IRC_USER") || "alfred_bot",
+  full_name: System.get_env("IRC_NAME") || "Alfred Bot", # optional, defaults to `:name`
   password: System.get_env("IRC_PASS") || "",
   server: "chat.freenode.net",
   port: 6697, # optional, defaults to `6667`
@@ -19,6 +19,12 @@ config :navii, Navii.Robot,
   responders: [
     {Hedwig.Responders.Help, []},
     {Hedwig.Responders.Ping, []},
+    {HedwigSimpleResponders.Fishpun, []},
+    {HedwigSimpleResponders.Flip, []},
+    {HedwigSimpleResponders.Slogan, []},
+    {HedwigSimpleResponders.Stallman, []},
+    {HedwigSimpleResponders.Time, []},
+    {HedwigSimpleResponders.Uptime, []},
     {Navii.Responders.Overhear, []},
     {Navii.Responders.Weather, []},
     {Navii.Responders.Currency, []},
