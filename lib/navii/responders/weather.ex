@@ -7,6 +7,12 @@ defmodule Navii.Responders.Weather do
   require Logger
 
   defmodule Geo do
+    @type t :: %__MODULE__ {
+      lat: Float.t,
+      lng: Float.t,
+      text: String.t
+    }
+
     defstruct [
       lat: 49.06454489999999,
       lng: -122.2556566,
@@ -15,6 +21,15 @@ defmodule Navii.Responders.Weather do
   end
 
   defmodule Weather do
+    @type t :: %__MODULE__ {
+      geo: Geo.t,
+      temperature: Float.t,
+      humidity: Float.t,
+      currently: String.t,
+      hourly: String.t,
+      daily: String.t
+    }
+
     defstruct [:geo, :temperature, :humidity, :currently, :hourly, :daily]
   end
 
@@ -30,6 +45,7 @@ defmodule Navii.Responders.Weather do
   end
 
   # Get the geographic info from Google Maps
+  @spec get_geo(String.t | [String.t] | nil) :: Geo.t
   defp get_geo(nil), do: %Geo{}
   defp get_geo([loc | _]), do: get_geo(loc)
   defp get_geo(loc) do
@@ -49,6 +65,7 @@ defmodule Navii.Responders.Weather do
   end
 
   # Get the weather info from Darksky
+  @spec get_weather(Geo.t) :: Weather.t
   defp get_weather(%Geo{lat: lat, lng: lng} = geo) do
     key = System.get_env("DARKSKY_KEY")
     darksky_url = "https://api.darksky.net/forecast/#{key}/#{lat},#{lng}"
@@ -72,6 +89,7 @@ defmodule Navii.Responders.Weather do
   end
 
   # Format the weather info into a nice string
+  @spec format_weather(Weather.t) :: String.t
   defp format_weather(%Weather{currently: nil}), do: "No idea..."
   defp format_weather(%Weather{} = weather) do
     """
@@ -80,6 +98,7 @@ defmodule Navii.Responders.Weather do
   end
 
   # Replace temps in F in a string to C/F
+  @spec replace_temps(String.t) :: String.t
   defp replace_temps(str) do
     Regex.replace(~r/(\d+(?:\.\d+)?) ?°F/, str, fn _, temp ->
       {deg_f, _} = Float.parse(temp)
