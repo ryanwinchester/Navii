@@ -21,6 +21,7 @@ config :navii, Navii.Robot,
     {Hedwig.Responders.Ping, []},
     {Navii.Responders.Overhear, []},
     {Navii.Responders.Weather, []},
+    {Navii.Responders.Currency, []},
   ]
 
 # This configuration is loaded before any dependency and is restricted

@@ -1,8 +1,12 @@
 defmodule Navii.Responders.Overhear do
   use Hedwig.Responder
 
-  hear ~r/^just do it,?(?: \w+)?$/, msg do
-    send msg, "https://www.youtube.com/watch?v=hAEQvlaZgKY"
+  hear ~r/^just do it,?(?: (\w+))?$/, msg do
+    if msg.matches[1] do
+      send msg, "#{msg.matches[1]}: https://www.youtube.com/watch?v=hAEQvlaZgKY"
+    else
+      send msg, "https://www.youtube.com/watch?v=hAEQvlaZgKY"
+    end
   end
 
   hear ~r/┻━┻/, msg do
