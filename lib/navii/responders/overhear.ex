@@ -14,6 +14,11 @@ defmodule Navii.Responders.Overhear do
 
   use Hedwig.Responder
 
+  hear ~r/^\^5 (.+)$/, msg do
+    recipient = msg.matches[1]
+    emote msg, "high fives #{recipient}"
+  end
+
   hear ~r/^just do it,?(?: (\w+))?$/, msg do
     if msg.matches[1] do
       send msg, "#{msg.matches[1]}: https://www.youtube.com/watch?v=hAEQvlaZgKY"
