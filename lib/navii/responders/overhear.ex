@@ -1,4 +1,17 @@
 defmodule Navii.Responders.Overhear do
+  @moduledoc """
+  Listends for specific patterns in order to respond with something whimsical.
+
+  ### Examples
+
+      User> (╯°□°）╯︵ ┻━┻
+      alfred> ┬──┬◡ﾉ(° -°ﾉ)
+
+      User> Seriously guys, this is important
+      alfred> http://i.imgur.com/0lyao5E.gif
+
+  """
+
   use Hedwig.Responder
 
   hear ~r/^just do it,?(?: (\w+))?$/, msg do

@@ -1,4 +1,14 @@
 defmodule Navii.Responders.Currency do
+  @moduledoc """
+  Responds to "convert :amount :currency into|in|to :currency"
+
+  ### Examples
+
+      User> alfred convert 10 USD to CAD
+      alfred> 10.00 USD is 13.23 CAD
+
+  """
+
   use Hedwig.Responder
   require Logger
 

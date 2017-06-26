@@ -1,6 +1,14 @@
 defmodule Navii.Responders.Weather do
   @moduledoc """
-  Responds to 'weather :location' with the weather for that location.
+  Responds to "weather :location" with the weather for that location.
+
+  ### Examples
+
+      User> alfred weather las vegas
+      alfred> Weather for Las Vegas, NV, USA: Clear. 35°C (94°F) 11% humidity.
+      Clear throughout the day. No precipitation throughout the week, with
+      temperatures falling to 39°C (103°F) on Thursday.
+
   """
 
   use Hedwig.Responder
