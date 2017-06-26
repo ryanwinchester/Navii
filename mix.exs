@@ -38,6 +38,7 @@ defmodule Navii.Mixfile do
       {:distillery, "~> 1.4"},
       {:httpoison, "~> 0.11.2"},
       {:poison, "~> 3.1"},
+      {:decimal, "~> 1.4"},
     ]
   end
 end

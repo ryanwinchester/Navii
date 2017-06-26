@@ -11,14 +11,12 @@ defmodule Navii.Responders.Currency do
   @currency_choices Enum.join(@currencies, "|")
 
   respond ~r/convert ?([0-9.]+) ?(#{@currency_choices}) (?:into|in|to)? ?(#{@currency_choices})/i, msg do
-    {amount, _} = Float.parse(msg.matches[1])
+    {amount, _} = Decimal.new(msg.matches[1])
     from = String.upcase(msg.matches[2])
     to = String.upcase(msg.matches[3])
 
-    {from_rate, to_rate} = fetch_rates(from, to)
-
-    converted = ((amount / from_rate) * to_rate) |> Float.round(2)
-    amount = Float.round(amount, 2)
+    converted = get_converted(amount, fetch_rates(from, to))
+    amount = Decimal.round(amount, 2) |> Decimal.to_string()
 
     send msg, "#{amount} #{from} is #{converted} #{to}"
   end
@@ -32,10 +30,18 @@ defmodule Navii.Responders.Currency do
       {:ok, %{status_code: 200, body: body}} ->
         [from_rate | _] = Regex.run(~r/currency='#{from}' rate='(.+)'/, body, capture: :all_but_first)
         [to_rate | _] = Regex.run(~r/currency='#{to}' rate='(.+)'/, body, capture: :all_but_first)
-        {String.to_float(from_rate), String.to_float(to_rate)}
+        {Decimal.new(from_rate), Decimal.new(to_rate)}
       {_, res} ->
         Logger.warn inspect(res)
         :error
     end
+  end
+
+  defp get_converted(amount, {from_rate, to_rate}) do
+    amount
+    |> Decimal.div(from_rate)
+    |> Decimal.mult(to_rate)
+    |> Decimal.round(2)
+    |> Decimal.to_string()
   end
 end
