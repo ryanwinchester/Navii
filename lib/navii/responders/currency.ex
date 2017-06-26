@@ -11,7 +11,7 @@ defmodule Navii.Responders.Currency do
   @currency_choices Enum.join(@currencies, "|")
 
   respond ~r/convert ?([0-9.]+) ?(#{@currency_choices}) (?:into|in|to)? ?(#{@currency_choices})/i, msg do
-    {amount, _} = Decimal.new(msg.matches[1])
+    amount = Decimal.new(msg.matches[1])
     from = String.upcase(msg.matches[2])
     to = String.upcase(msg.matches[3])
 
