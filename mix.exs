@@ -38,8 +38,8 @@ defmodule Navii.Mixfile do
       {:hedwig_simple_responders, "~> 0.1.2"},
       {:distillery, "~> 1.4"},
       {:httpoison, "~> 0.11.2", override: true},
-      {:poison, "~> 3.1"},
-      {:decimal, "~> 1.4"},
+      {:hedwig_currency, "~> 0.1.0"},
+      {:hedwig_weather, "~> 0.1.0"},
     ]
   end
 end

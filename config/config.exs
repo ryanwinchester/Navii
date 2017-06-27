@@ -4,9 +4,9 @@ use Mix.Config
 
 config :navii, Navii.Robot,
   adapter: Hedwig.Adapters.IRC,
-  aka: "!",
   name: System.get_env("IRC_NICK") || "alfred_bot",
-  user: System.get_env("IRC_USER") || "alfred_bot",
+  aka: (System.get_env("IRC_NICK") || "alfred_bot") |> String.downcase,
+  irc_user: System.get_env("IRC_USER") || "alfred_bot",
   full_name: System.get_env("IRC_NAME") || "Alfred Bot", # optional, defaults to `:name`
   password: System.get_env("IRC_PASS") || "",
   server: "chat.freenode.net",
@@ -25,9 +25,9 @@ config :navii, Navii.Robot,
     {HedwigSimpleResponders.Stallman, []},
     {HedwigSimpleResponders.Time, []},
     {HedwigSimpleResponders.Uptime, []},
+    {Hedwig.Responders.Weather, []},
+    {Hedwig.Responders.Currency, []},
     {Navii.Responders.Overhear, []},
-    {Navii.Responders.Weather, []},
-    {Navii.Responders.Currency, []},
   ]
 
 # This configuration is loaded before any dependency and is restricted
