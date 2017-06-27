@@ -27,6 +27,7 @@ config :navii, Navii.Robot,
     {HedwigSimpleResponders.Uptime, []},
     {Hedwig.Responders.Weather, []},
     {Hedwig.Responders.Currency, []},
+    {Hedwig.Responders.Youtube, []},
     {Navii.Responders.Overhear, []},
   ]
 

@@ -40,6 +40,7 @@ defmodule Navii.Mixfile do
       {:httpoison, "~> 0.11.2", override: true},
       {:hedwig_currency, "~> 0.1.0"},
       {:hedwig_weather, "~> 0.1.0"},
+      {:hedwig_youtube, "~> 0.1.0"},
     ]
   end
 end
