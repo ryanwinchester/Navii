@@ -14,7 +14,7 @@ defmodule Navii.Responders.Inspire do
   end
 
   @doc """
-  Fetch the image from inspirebot.me
+  Fetch the image from inspirobot.me
   """
   @spec fetch_img() :: String.t
   def fetch_img do
