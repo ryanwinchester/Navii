@@ -31,6 +31,10 @@ defmodule Navii.Responders.Overhear do
     send msg, "┬──┬◡ﾉ(° -°ﾉ)"
   end
 
+  hear ~r/big wh?oop,? wanna (fight|fite)\??/i, msg do
+    send msg, "bring it ʕง•ᴥ•ʔง"
+  end
+
   hear ~r/srsly guise|seriously,? guys/, msg do
     send msg, Enum.random([
       "http://i.imgur.com/0lyao5E.gif",
