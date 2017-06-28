@@ -41,6 +41,7 @@ defmodule Navii.Mixfile do
       {:hedwig_currency, "~> 0.1.0"},
       {:hedwig_weather, "~> 0.1.0"},
       {:hedwig_youtube, "~> 0.1.0"},
+      {:hedwig_inspire, "~> 0.1.0"},
     ]
   end
 end

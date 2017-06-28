@@ -29,7 +29,7 @@ config :navii, Navii.Robot,
     {Hedwig.Responders.Currency, []},
     {Hedwig.Responders.Youtube, []},
     {Navii.Responders.Overhear, []},
-    {Navii.Responders.Inspire, []},
+    {Hedwig.Responders.Inspire, []},
   ]
 
 # This configuration is loaded before any dependency and is restricted
