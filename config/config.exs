@@ -17,18 +17,23 @@ config :navii, Navii.Robot,
     |> String.split(",")
     |> Enum.map(&({&1, ""})),
   responders: [
+    # Included
     {Hedwig.Responders.Help, []},
     {Hedwig.Responders.Ping, []},
+    # Simple Responders
     {HedwigSimpleResponders.Flip, []},
     {HedwigSimpleResponders.Slogan, []},
     {HedwigSimpleResponders.Stallman, []},
     {HedwigSimpleResponders.Time, []},
     {HedwigSimpleResponders.Uptime, []},
-    {Hedwig.Responders.Weather, []},
+    # My packages
     {Hedwig.Responders.Currency, []},
-    {Hedwig.Responders.Youtube, []},
-    {Navii.Responders.Overhear, []},
     {Hedwig.Responders.Inspire, []},
+    {Hedwig.Responders.Weather, []},
+    {Hedwig.Responders.Youtube, []},
+    # Custom
+    {Navii.Responders.Debugger, []},
+    {Navii.Responders.Overhear, []},
   ]
 
 # This configuration is loaded before any dependency and is restricted
