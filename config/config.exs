@@ -19,7 +19,6 @@ config :navii, Navii.Robot,
   responders: [
     {Hedwig.Responders.Help, []},
     {Hedwig.Responders.Ping, []},
-    {HedwigSimpleResponders.Fishpun, []},
     {HedwigSimpleResponders.Flip, []},
     {HedwigSimpleResponders.Slogan, []},
     {HedwigSimpleResponders.Stallman, []},
