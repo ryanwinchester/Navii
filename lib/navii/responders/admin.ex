@@ -1,5 +1,5 @@
 defmodule Navii.Responders.Admin do
-  use Hedwig.Responder
+  use Navii.Responder
 
   require Logger
 
@@ -14,16 +14,35 @@ defmodule Navii.Responders.Admin do
     end
   end
 
-  respond ~r/kick ([^\s]+) from #([^\s]+)$/, msg do
+  respond ~r/kick ([^\s]+) from #([^\s]+)(?: (.+))?$/, msg do
     if is_admin?(msg.user) do
       kickee = msg.matches[1]
       channel = msg.matches[2]
+      reason = msg.matches[3] || ""
+
       pmsg = %{msg | room: "Chanserv"}
       cmsg = %{msg | room: channel}
       send msg, "kicking #{kickee} from ##{channel} ᕕ( ᐛ )ᕗ"
       send pmsg, "op ##{channel}"
-      :timer.sleep(1000)
-      send cmsg, "/kick #{kickee}"
+      command msg, Irc.Commands.kick!(channel, kickee, reason)
+      send pmsg, "deop ##{channel}"
+    else
+      send msg, "No, sir. ಠ_ರೃ"
+    end
+  end
+
+  respond ~r/kickban ([^\s]+) from #([^\s]+) (.+)$/, msg do
+    if is_admin?(msg.user) do
+      kickee = msg.matches[1]
+      channel = msg.matches[2]
+      reason = msg.matches[3]
+
+      pmsg = %{msg | room: "Chanserv"}
+      _cmsg = %{msg | room: channel}
+
+      send msg, "kickbanning #{kickee} from ##{channel} #{reason} ᕕ( ᐛ )ᕗ"
+      send pmsg, "op ##{channel}"
+      send pmsg, "akick ##{channel} #{kickee} #{reason}"
       send pmsg, "deop ##{channel}"
     else
       send msg, "No, sir. ಠ_ರೃ"

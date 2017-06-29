@@ -34,7 +34,7 @@ defmodule Navii.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:hedwig_irc, git: "git@github.com:ryanwinchester/hedwig_irc.git"},
+      {:hedwig_irc, git: "git@github.com:ryanwinchester/hedwig_irc.git", branch: "feature-cmd"},
       {:hedwig_simple_responders, "~> 0.1.2"},
       {:distillery, "~> 1.4"},
       {:runtime_config, "~> 0.1.0"},
