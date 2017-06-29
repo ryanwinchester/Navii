@@ -3,8 +3,8 @@ defmodule Navii.Responders.Debugger do
 
   require Logger
 
-  respond ~r/what channel( is (this|it))?\??/i, msg do
-    reply msg, "We are in #{msg.room}."
+  respond ~r/where ?am ?i\??/i, msg do
+    reply msg, "You are in #{msg.room}."
   end
 
   respond ~r/who ?am ?i\??/i, msg do
