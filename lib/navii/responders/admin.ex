@@ -18,10 +18,11 @@ defmodule Navii.Responders.Admin do
     if is_admin?(msg.user) do
       kickee = msg.matches[1]
       channel = msg.matches[2]
+      pmsg = %{msg | room: "Chanserv"}
       send msg, "kicking #{kickee} from ##{channel}"
-      send msg, "/cs op ##{channel}"
-      send msg, "/kick ##{channel} #{kickee}"
-      send msg, "/cs deop ##{channel}"
+      send pmsg, "op ##{channel}"
+      send pmsg, "kick ##{channel} #{kickee}"
+      send pmsg, "deop ##{channel}"
       send msg, "done ᕕ( ᐛ )ᕗ"
     else
       send msg, "No, sir. ಠ_ರೃ"
