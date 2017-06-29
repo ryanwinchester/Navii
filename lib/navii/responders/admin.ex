@@ -14,7 +14,7 @@ defmodule Navii.Responders.Admin do
     end
   end
 
-  respond ~r/kick ([^\s]]+) from #([^\s]+)$/, msg do
+  respond ~r/kick ([^\s]+) from #([^\s]+)$/, msg do
     if is_admin?(msg.user) do
       kickee = msg.matches[1]
       channel = msg.matches[2]
