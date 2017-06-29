@@ -14,8 +14,19 @@ defmodule Navii.Responders.Admin do
     end
   end
 
-  hear ~r/kick #(\w+) ([^\s]+)$/, msg do
-    send msg, "i should kick #{msg.matches[2]} from ##{msg.matches[1]}"
+  hear ~r/kick ([^\s]]+) from #([^\s]+)$/, msg do
+    if is_admin?(msg.user) do
+      bot = Config.get_env(:navii,)
+      kickee = msg.matches[1]
+      channel = msg.matches[2]
+      send msg, "kicking #{kickee} from ##{channel}"
+      send msg, "/cs op ##{channel}"
+      send msg, "/kick ##{channel} #{kickee}"
+      send msg, "/cs deop ##{channel}"
+      send msg, "done ᕕ( ᐛ )ᕗ"
+    else
+      send msg, "No, sir. ಠ_ರೃ"
+    end
   end
 
   @doc """
