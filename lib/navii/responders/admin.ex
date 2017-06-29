@@ -7,11 +7,15 @@ defmodule Navii.Responders.Admin do
     if is_admin?(msg.user) do
       Logger.warn "Deploying now..."
       System.cmd "curl", [Config.get_env(:navii, :deployhook)]
-      send msg, "Yes, sir."
+      send msg, "Yes, sir. (╭ರᴥ•́)"
     else
       Logger.warn "Loser trying to deploy..."
       send msg, "No, sir. ಠ_ರೃ"
     end
+  end
+
+  hear ~r/kick #(\w+) ([^\s]+)$/, msg do
+    send msg, "i should kick #{msg.matches[2]} from ##{msg.matches[1]}"
   end
 
   @doc """

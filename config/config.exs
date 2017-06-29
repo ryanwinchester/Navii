@@ -31,9 +31,12 @@ config :navii, Navii.Robot,
   port: 6697, # optional, defaults to `6667`
   ssl?: true, # optional, defaults to `false`
   rooms:
-    (System.get_env("IRC_CHANNELS") || "")
+    (System.get_env("IRC_CHANNELS") || ":")
     |> String.split(",")
-    |> Enum.map(&({&1, ""})),
+    |> Enum.map(fn creds ->
+         [chann, pass] = String.split(creds, ":", parts: 2)
+         {chann, pass}
+       end),
   responders: [
     # Included
     {Hedwig.Responders.Help, []},
