@@ -1,16 +1,13 @@
 defmodule Navii.Responders.Debugger do
   use Hedwig.Responder
+
   require Logger
 
-  respond ~r/debug (.+)/i, msg do
-    reply msg, "`#{msg.matches[1]}`"
-  end
-
   respond ~r/what channel( is (this|it))?\??/i, msg do
-    reply msg, "We are in `#{msg.room}`."
+    reply msg, "We are in #{msg.room}."
   end
 
-  respond ~r/who am i\??/i, msg do
-    reply msg, "You are `#{inspect(msg.user)}`."
+  respond ~r/who ?am ?i\??/i, msg do
+    reply msg, "You are #{msg.user.name} (#{msg.user.id})."
   end
 end
