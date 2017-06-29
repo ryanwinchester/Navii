@@ -14,15 +14,15 @@ defmodule Navii.Responders.Admin do
     end
   end
 
-  respond ~r/kick ([^\s]+) from (#[^\s]+)(?: (.+))?$/, msg do
+  # kick <channel> <nick> :[reason]
+  respond ~r/kick (#[^\s]+) ([^\s]+)(?: (.+))?$/, msg do
     if is_admin?(msg.user) do
       # matches
-      kickee = msg.matches[1]
-      channel = msg.matches[2]
-      reason = msg.matches[3] || ""
-      # recipients
+      channel = msg.matches[1]
+      kickee = msg.matches[2]
+      reason = ":" <> (msg.matches[3] || kickee)
+      # chanserv
       pmsg = %{msg | room: "Chanserv"}
-      cmsg = %{msg | room: channel}
       # kick
       send pmsg, "op #{channel}"
       :timer.sleep(1000)
@@ -34,18 +34,23 @@ defmodule Navii.Responders.Admin do
     end
   end
 
-  respond ~r/kickban ([^\s]+) from #([^\s]+) (.+)$/, msg do
+  # kickban <channel> <nick|pattern> [!P|!T <minutes>] [reason]
+  respond ~r/kickban (#[^\s]+) ([^\s]+)(?: (.+))?$/, msg do
     if is_admin?(msg.user) do
       # matches
-      kickee = msg.matches[1]
-      channel = msg.matches[2]
-      reason = msg.matches[3] || ""
+      channel = msg.matches[1]
+      kickee = msg.matches[2]
+      opts = msg.matches[3] || ""
       # chanserv
       pmsg = %{msg | room: "Chanserv"}
       # kickban
-      send pmsg, "op ##{channel}"
-      send pmsg, "akick ##{channel} #{kickee} #{reason}"
-      send pmsg, "deop ##{channel}"
+      send pmsg, "op #{channel}"
+      :timer.sleep(1000)
+      send pmsg, "AKICK #{channel} ADD #{kickee} #{opts}"
+      :timer.sleep(500)
+      command msg, Irc.Commands.kick!(channel, kickee, "b-b-banned")
+      :timer.sleep(1000)
+      send pmsg, "deop #{channel}"
     else
       send msg, "No, sir. ಠ_ರೃ"
     end
