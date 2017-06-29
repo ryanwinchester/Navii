@@ -101,7 +101,7 @@ defmodule Navii.Responder do
       command msg, IrcCommand.kick!(channel, nick, message)
   """
   def command(%Hedwig.Message{robot: robot} = msg, cmd) do
-    Hedwig.Robot.command(robot, %{msg | command: cmd})
+    Navii.Robot.command(robot, %{msg | command: cmd})
   end
 
   @doc """

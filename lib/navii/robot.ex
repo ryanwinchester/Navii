@@ -28,12 +28,12 @@ defmodule Navii.Robot do
   @doc """
   Send an emote message via the robot.
   """
-  def command(pid, msg) do
-    GenServer.cast(pid, {:command, msg})
+  def command(pid, %{command: cmd}) do
+    GenServer.cast(pid, {:command, cmd})
   end
 
-  def handle_cast({:command, msg}, %{adapter: adapter} = state) do
-    __adapter__().command(adapter, msg)
+  def handle_cast({:command, cmd}, %{adapter: adapter} = state) do
+    __adapter__().command(adapter, cmd)
     {:noreply, state}
   end
 end
