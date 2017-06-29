@@ -35,7 +35,7 @@ defmodule Navii.Responders.Admin do
   end
 
   # kickban <channel> <nick|pattern> [!P|!T <minutes>] [reason]
-  respond ~r/kickban (#[^\s]+) ([^\s]+)(?: (.+))?$/, msg do
+  respond ~r/kickban (#[^\s]+) ([^\s]+)(?: .+)?$/, msg do
     if is_admin?(msg.user) do
       # matches
       channel = msg.matches[1]
@@ -46,9 +46,7 @@ defmodule Navii.Responders.Admin do
       # kickban
       send pmsg, "op #{channel}"
       :timer.sleep(1000)
-      send pmsg, "AKICK #{channel} ADD #{kickee} #{opts}"
-      :timer.sleep(500)
-      command msg, Irc.Commands.kick!(channel, kickee, "b-b-banned")
+      send pmsg, "AKICK #{channel} ADD #{kickee}#{opts}"
       :timer.sleep(1000)
       send pmsg, "deop #{channel}"
     else
