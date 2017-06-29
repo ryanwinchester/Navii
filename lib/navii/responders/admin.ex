@@ -22,6 +22,7 @@ defmodule Navii.Responders.Admin do
       cmsg = %{msg | room: channel}
       send msg, "kicking #{kickee} from ##{channel} ᕕ( ᐛ )ᕗ"
       send pmsg, "op ##{channel}"
+      :timer.sleep(1000)
       send cmsg, "/kick #{kickee}"
       send pmsg, "deop ##{channel}"
     else
