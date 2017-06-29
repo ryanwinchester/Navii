@@ -16,7 +16,6 @@ defmodule Navii.Responders.Admin do
 
   hear ~r/kick ([^\s]]+) from #([^\s]+)$/, msg do
     if is_admin?(msg.user) do
-      bot = Config.get_env(:navii,)
       kickee = msg.matches[1]
       channel = msg.matches[2]
       send msg, "kicking #{kickee} from ##{channel}"
