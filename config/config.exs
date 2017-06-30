@@ -20,6 +20,10 @@ use Mix.Config
 #
 #     config :logger, level: :info
 #
+config :navii,
+  admins: {:system, "IRC_ADMINS"},
+  deployhook: {:system, "DEPLOYHOOK"}
+
 config :navii, Navii.Robot,
   adapter: Hedwig.Adapters.IRC,
   name: System.get_env("IRC_NICK") || "alfred_bot",
@@ -58,9 +62,12 @@ config :navii, Navii.Robot,
     {Navii.Responders.Overhear, []},
   ]
 
-config :navii,
-  admins: {:system, "IRC_ADMINS"},
-  deployhook: {:system, "DEPLOYHOOK"}
+config :hedwig_weather,
+  location: {:system, "LOCATION"},
+  darksky_key: {:system, "DARKSKY_KEY"}
+
+config :hedwig_youtube,
+  youtube_key: {:system, "YOUTUBE_KEY"}
 
 # It is also possible to import configuration files, relative to this
 # directory. For example, you can emulate configuration per environment
