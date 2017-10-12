@@ -16,7 +16,11 @@ defmodule Navii.Responders.Overhear do
 
   hear ~r/^\^5 (.+)$/, msg do
     recipient = msg.matches[1]
-    emote msg, "high fives #{recipient}"
+    if String.match?(recipient, ~r/#{msg.robot.name}/i) do
+      emote msg, "https://media.giphy.com/media/irnky0EUGEZnq/giphy.gif"
+    else
+      emote msg, "high fives #{recipient}"
+    end
   end
 
   hear ~r/^just do it,?(?: (\w+))?$/, msg do
