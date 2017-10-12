@@ -16,7 +16,7 @@ defmodule Navii.Responders.Overhear do
 
   hear ~r/^\^5 (.+)$/, msg do
     recipient = msg.matches[1]
-    name = Hedwig.Robot.get_name(msg.robot)
+    name = Hedwig.Robot.name(msg.robot)
     if String.match?(recipient, ~r/#{name}/i) do
       emote msg, "https://media.giphy.com/media/irnky0EUGEZnq/giphy.gif"
     else
