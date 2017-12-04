@@ -59,6 +59,7 @@ config :navii, Navii.Robot,
     # Custom
     {Navii.Responders.Admin, []},
     {Navii.Responders.Debugger, []},
+    {Navii.Responders.EightBall, []},
     {Navii.Responders.Overhear, []},
   ]
 
