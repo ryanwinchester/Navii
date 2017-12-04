@@ -34,7 +34,7 @@ defmodule Navii.Responders.EightBall do
     "Very doubtful",
   ]
 
-  respond ~r/.?.?will .+\?/i, msg do
+  respond ~r/.?.?(will|should) .+\?.?$/i, msg do
     reply msg, random(@responses)
   end
 end
