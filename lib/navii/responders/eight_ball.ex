@@ -34,7 +34,7 @@ defmodule Navii.Responders.EightBall do
     "Very doubtful",
   ]
 
-  respond ~r/.*what do you think(\?)?/i, msg do
+  respond ~r/.?.?will .*\?.?$/i, msg do
     reply msg, Enum.random(@responses)
   end
 end
