@@ -35,6 +35,6 @@ defmodule Navii.Responders.EightBall do
   ]
 
   respond ~r/.?.?will .+\?/i, msg do
-    reply msg, Enum.random(@responses)
+    reply msg, random(@responses)
   end
 end
