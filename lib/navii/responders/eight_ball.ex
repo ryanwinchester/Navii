@@ -4,7 +4,7 @@ defmodule Navii.Responders.EightBall do
 
   ### Examples
 
-      User> Alfred, what do you think?
+      User> Alfred, will I eat bacon today?
       alfred> Yes definitely
 
   """
