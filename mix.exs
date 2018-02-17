@@ -40,7 +40,7 @@ defmodule Navii.Mixfile do
       {:runtime_config, "~> 0.1.0"},
       {:httpoison, "~> 0.11", override: true},
       {:hedwig_currency, "~> 0.1.0"},
-      {:hedwig_weather, "~> 0.1.0"},
+      {:hedwig_weather, "~> 0.1.3"},
       {:hedwig_youtube, "~> 0.1.0"},
       {:hedwig_inspire, "~> 0.1.0"},
     ]
